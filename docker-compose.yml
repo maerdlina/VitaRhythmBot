@@ -1,0 +1,15 @@
+services:
+    postgres-todo:
+        image: postgres:16
+        container_name: vitarhythm_postgres_todo
+        environment:
+            POSTGRES_DB: vitarhythm_todo
+            POSTGRES_USER: admin
+            POSTGRES_PASSWORD: admin
+        ports:
+            - "5433:5432" # Не конфликтует с основной БД
+        volumes:
+            - postgres-todo-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-todo-data:

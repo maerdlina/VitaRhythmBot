@@ -1,0 +1,22 @@
+server:
+  port: 8000 # Порт API Gateway
+
+spring:
+  application:
+    name: api-gateway # Имя сервиса в Eureka
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/ # Ссылка на ваш Eureka Server
+    fetch-registry: true
+    register-with-eureka: true

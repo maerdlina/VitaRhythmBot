@@ -1,0 +1,52 @@
+server:
+  port: 8001 # Порт API Gateway
+
+spring:
+  application:
+    name: todo-service # Имя сервиса в Eureka
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/vitarhythm_todo
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+  cloud:
+    stream:
+      bindings:
+        taskOut-out-0: # ✅ ПРАВИЛЬНО (соответствует имени бина taskOut)
+          destination: task-events
+          content-type: application/json
+      kafka:
+        binder:
+          brokers: localhost:9092
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/ # Ссылка на ваш Eureka Server
+    fetch-registry: true
+    register-with-eureka: true
+
+# Логирование SQL
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace

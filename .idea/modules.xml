@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Gateway.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ToDoService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ToDoService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/VitaRhythmBot.iml" filepath="$PROJECT_DIR$/.idea/VitaRhythmBot.iml" />
+    </modules>
+  </component>
+</project>
